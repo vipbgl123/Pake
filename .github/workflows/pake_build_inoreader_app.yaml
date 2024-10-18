@@ -47,7 +47,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        build: [linux, macos, windows]
+        build: [macos]
         include:
           - build: linux
             os: ubuntu-latest
@@ -100,14 +100,6 @@ jobs:
           npm install
           npm run build:config
 
-      - name: Build for Ubuntu
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          npm run tauri build
-          mkdir -p output/linux
-          mv src-tauri/target/release/bundle/deb/*.deb output/linux/${{inputs.title}}_`arch`.deb
-          mv src-tauri/target/release/bundle/appimage/*.AppImage output/linux/"${{inputs.title}}"_`arch`.AppImage
-
       - name: Build for macOS
         if: matrix.os == 'macos-latest'
         run: |
@@ -116,18 +108,6 @@ jobs:
           npm run tauri build -- --target universal-apple-darwin
           mkdir -p output/macos
           mv src-tauri/target/universal-apple-darwin/release/bundle/dmg/*.dmg output/macos/"${{inputs.title}}".dmg
-
-      - name: Build for Windows
-        if: matrix.os == 'windows-latest'
-        run: |
-          npm run tauri build -- --target x86_64-pc-windows-msvc
-          New-Item -Path "output\windows" -ItemType Directory
-          Move-Item -Path "src-tauri\target\x86_64-pc-windows-msvc\release\bundle\msi\*.msi" -Destination "output\windows\${{inputs.title}}_x64.msi"
-
-      - name: Restore Cargo Lock File(Windows Only)
-        if: matrix.os == 'windows-latest'
-        run: |
-          git checkout -- src-tauri/Cargo.lock
 
       - name: Rust cache store
         uses: actions/cache/save@v3
