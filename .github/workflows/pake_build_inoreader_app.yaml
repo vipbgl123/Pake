@@ -1,4 +1,4 @@
-name: Build Inoreader App
+name: Build inoreader App
 on:
   workflow_dispatch:
     inputs:
@@ -9,11 +9,11 @@ on:
       title:
         description: 'app title'
         required: true
-        default: 'Inoreader'
+        default: 'inoreader'
       name_zh:
         description: 'app name in Chinese'
         required: true
-        default: 'Inoreader'
+        default: 'inoreader'
       url:
         description: 'app url'
         required: true
@@ -24,17 +24,17 @@ on:
         description: 'app name'
         type: string
         required: true
-        default: 'Inoreader'
+        default: 'inoreader'
       title:
         description: 'app title'
         required: true
         type: string
-        default: 'Inoreader'
+        default: 'inoreader'
       name_zh:
         description: 'app name in Chinese'
         required: true
         type: string
-        default: 'Inoreader'
+        default: 'inoreader'
       url:
         description: 'app url'
         required: true
