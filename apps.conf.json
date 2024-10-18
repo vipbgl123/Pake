@@ -1,6 +1,12 @@
 {
   "apps": [
     {
+      "name": "inoreader",
+      "title": "inoreader",
+      "name_zh": "inoreader",
+      "url": "https://www.inoreader.com/all_articles"
+    },
+    {
       "name": "programmusic",
       "title": "ProgramMusic",
       "name_zh": "ProgramMusic",
