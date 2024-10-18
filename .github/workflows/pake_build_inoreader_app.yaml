@@ -1,5 +1,4 @@
-
-name: Build Single Popular App
+name: Build Inoreader App
 on:
   workflow_dispatch:
     inputs:
